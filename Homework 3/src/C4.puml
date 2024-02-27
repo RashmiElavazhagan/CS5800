@@ -1,0 +1,20 @@
+@startuml
+
+class File {
+    - name : String
+    + File(name : String)
+    + getName() : String
+    + setName(name : String) : void
+}
+
+class Folder {
+    - files : File[]
+    + Folder()
+    + getFiles() : File[]
+    + addFile(file : File) : void
+    + removeFile(file : File) : void
+}
+
+Folder "1" *-- "*" File : contains
+
+@enduml

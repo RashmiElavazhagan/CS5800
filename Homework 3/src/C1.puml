@@ -1,0 +1,45 @@
+@startuml
+
+class Employee {
+    - firstName : String
+    - lastName : String
+    - socialSecurityNumber : String
+    + printEmployeeDetails() : void
+}
+
+class HourlyEmployee extends Employee {
+    - wage : double
+    - hours : double
+    + HourlyEmployee(firstName: String, lastName: String, socialSecurityNumber: String, wage: double, hours: double)
+    + printEmployeeDetails() : void
+}
+
+class SalariedEmployee extends Employee {
+    - weeklySalary : double
+    + SalariedEmployee(firstName: String, lastName: String, socialSecurityNumber: String, weeklySalary: double)
+    + printEmployeeDetails() : void
+}
+
+class CommissionEmployee extends Employee {
+    - grossSales : int
+    - commissionRate : int
+    + CommissionEmployee(firstName: String, lastName: String, socialSecurityNumber: String, commissionRate: int, grossSales: int)
+    + printEmployeeDetails() : void
+    + setCommissionRate(commissionRate: int) : void
+    + setGrossSales(grossSales: int) : void
+    + getCommissionRate() : int
+    + getGrossSales() : int
+}
+
+class BaseEmployee extends Employee {
+    - baseSalary : double
+    + BaseEmployee(firstName: String, lastName: String, socialSecurityNumber: String, baseSalary: double)
+    + printEmployeeDetails() : void
+}
+
+Employee <|-- HourlyEmployee
+Employee <|-- SalariedEmployee
+Employee <|-- CommissionEmployee
+Employee <|-- BaseEmployee
+
+@enduml
