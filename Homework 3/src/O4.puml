@@ -1,52 +1,69 @@
 @startuml
-object demo {
-  name = "demo1"
+
+object "php_demo1: Folder" as mainFolder {
+    name = "php_demo1"
 }
 
-object sourceFiles {
-  name = "Source Files"
+object "Source Files: Folder" as sf1{
+    name = "Source Files"
+    subfolders = [".phalcon", "app", "cache", "public"]
+    files = []
+}
+object "Include Path: Folder" as sf2{
+    name = "Include Path"
+    files = []
+    subfolders = []
+}
+object "Remote Files: Folder" as sf3{
+    name = "Remote Files"
+    files = []
+    subfolders = []
 }
 
-object includePath {
-  name = "Include Path"
+object ".phalcon: Folder" as sf4{
+    name = ".phalcon"
+    files = []
+    subfolders = []
+}
+object "app: Folder" as sf5{
+    name = "app"
+    files = []
+    subfolders = ["config", "controllers", "library", "migrations", "models", "views"]
+}
+object "cache: Folder" as sf6{
+    name =  "cache"
+    files = []
+    subfolders = []
+}
+object "public: Folder" as sf7{
+    name = "public"
+    files = [".htaccess", ".htrouter.php", "index.html"]
+    subfolders = []
 }
 
-object remoteFiles {
-  name = "Remote Files"
+object ".htaccess: File" as f1{
+     name = ".htaccess"
 }
 
-object phalcon {
-  name = ".phalcon"
+object ".htrouter.php: File" as f2{
+     name = ".htrouter.php"
 }
 
-object cache {
-  name = "cache"
+object "index.html: File" as f3{
+    name = "index.html"
 }
 
-object publicFolder {
-  name = "public"
-}
+mainFolder *-- sf1
+mainFolder *-- sf2
+mainFolder *-- sf3
 
-object htaccess {
-  fileName = ".htaccess"
-}
+sf1 *-- sf4
+sf1 *-- sf5
+sf1 *-- sf6
+sf1 *-- sf7
 
-object htrouter {
-  fileName = ".htrouter.php"
-}
-
-object index {
-  fileName = "index.html"
-}
-
-demo -down-> sourceFiles
-sourceFiles -down-> includePath
-sourceFiles -down-> remoteFiles
-sourceFiles -down-> phalcon
-sourceFiles -down-> cache
-sourceFiles -down-> publicFolder
-sourceFiles -down-> htaccess
-sourceFiles -down-> htrouter
-sourceFiles -down-> index
+sf7 *-- f1
+sf7 *-- f2
+sf7 *-- f3
 
 @enduml
